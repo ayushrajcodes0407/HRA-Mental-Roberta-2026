@@ -1,18 +1,18 @@
 # Hierarchical Risk-Aware Mental-RoBERTa
 
-A hierarchical transformer-based framework for multi-class mental health text classification and risk-aware screening research.
+A hierarchical transformer-based framework for multi-class mental health text classification and risk-aware computational screening research.
 
 ---
 
 ## Introduction
 
-Mental health text classification plays a critical role in early risk detection and computational linguistic screening. Standard flat classification models often face challenges with class imbalance, lexical overlap between comorbid mental health conditions, and varying degrees of severity between benign and high-risk expressions.
+Mental health text classification plays a significant role in computational linguistics and research into the early identification of mental-health-related linguistic patterns. Standard flat classification models often face challenges with class imbalance, lexical overlap between comorbid mental health expressions, and varying degrees of risk severity.
 
-This repository provides the reference implementation of the **Hierarchical Risk-Aware Mental-RoBERTa (HRA-Mental-RoBERTa)** framework. The architecture decomposes multi-class mental health assessment into a structured, two-stage hierarchical pipeline followed by a risk-aware post-processing layer:
+This repository provides the reference implementation of the **Hierarchical Risk-Aware Mental-RoBERTa (HRA-Mental-RoBERTa)** framework. The architecture decomposes multi-class mental health text assessment into a structured, two-stage hierarchical pipeline followed by a risk-aware post-processing layer:
 
-1. **Stage 1 (Binary Screening):** Differentiates benign statements (`Normal`) from individuals experiencing distress (`At-Risk`).
-2. **Stage 2 (Multi-Class Fine-Grained Categorization):** Routes distressed instances to a specialized multi-class classifier to identify specific conditions: Depression, Suicidal Ideation, Anxiety, Stress, Bipolar Disorder, and Personality Disorder.
-3. **Decision Layer:** Applies rule-based inference thresholding to ensure critical indicators (such as high-risk suicidal expressions) are consistently prioritized during clinical screening.
+1. **Stage 1 (Binary Screening):** Differentiates benign statements (`Normal`) from individuals expressing distress (`At-Risk`).
+2. **Stage 2 (Multi-Class Fine-Grained Categorization):** Routes distressed instances to a specialized multi-class classifier to distinguish specific categories: Depression, Suicidal Ideation, Anxiety, Stress, Bipolar Disorder, and Personality Disorder.
+3. **Decision Layer:** Applies the implemented rule-based inference logic (`stage2_decision`) to provide consistent handling and prioritization of predefined high-risk categories during model evaluation.
 
 ---
 
@@ -23,20 +23,23 @@ This repository contains the codebase and experimental workflows associated with
 > **Hierarchical Risk-Aware Mental-RoBERTa Framework for Early Multi-Class Screening of Mental-Health Conditions and Suicidal Ideation, 2026**
 
 ### Authors
-- **Ayush Raj**
-- **Abhinav Srivastava**
-- **Dr. Kamnta Nath Mishra**
-- **Dr. Alok Mishra**
+
+| Author | Designation / Role |
+|---|---|
+| **Ayush Raj** | B.Tech. Computer Science & Engineering · Researcher & Developer |
+| **Abhinav Srivastava** | Research Collaborator |
+| **Dr. Kamnta Nath Mishra** | Research Collaborator · Faculty of Computer Science & Engineering, BIT Mesra, Ranchi |
+| **Dr. Alok Mishra** | Professor, Data Management & Software Engineering · Faculty of Engineering, NTNU, Norway |
 
 ---
 
 ## Overview
 
-The framework adopts a two-stage strategy designed to separate the broad detection of distress from the fine-grained categorization of specific disorders:
+The framework adopts a two-stage strategy designed to separate the broad identification of distress from the fine-grained categorization of specific conditions:
 
-- **Stage 1 (Binary Screening):** Identifies whether an incoming text represents a baseline `Normal` state or indicates an `At-Risk` condition. Filtering out healthy instances at the first tier reduces spurious misclassifications across non-distressed text.
+- **Stage 1 (Binary Screening):** Identifies whether an incoming text represents a baseline `Normal` state or indicates an `At-Risk` condition. Filtering out benign instances at the first tier reduces spurious misclassifications across non-distressed text.
 - **Stage 2 (Multi-Class Classification):** Focuses model capacity specifically on distinguishing among distressed categories: *Depression*, *Suicidal*, *Anxiety*, *Stress*, *Bipolar*, and *Personality Disorder*.
-- **Decision Layer (Rule-Based Post-Processing):** Incorporates safety-focused inference logic (`stage2_decision`) where high-consequence classes (such as suicidal ideation) can be prioritized when predicted probability exceeds a tuned sensitivity threshold.
+- **Decision Layer (Rule-Based Post-Processing):** Incorporates risk-sensitive inference logic where predefined high-risk categories (such as suicidal ideation) can be prioritized when predicted probability exceeds a tuned sensitivity threshold.
 
 ---
 
@@ -79,7 +82,7 @@ Experiments utilize the benchmark *Sentiment Analysis for Mental Health* dataset
 ### Attributes
 - `unique_id`: Unique sample identifier
 - `text` (`statement`): Textual statement or social media post
-- `label` (`status`): Ground-truth mental health classification
+- `label` (`status`): Ground-truth classification category
 
 Detailed schema descriptions, sub-source breakdowns, and citations are documented in [`data/data.md`](data/data.md).
 
@@ -159,6 +162,15 @@ pip install -r requirements.txt
    - **Section 4:** Filter distressed data and train Stage 2 multi-class classifier.
    - **Section 5–7:** Evaluate system metrics, compute bootstrapped confidence intervals, and benchmark against flat classification.
 3. Pretrained model checkpoints and training artifacts are linked in [`models/readthis.md`](models/readthis.md).
+
+---
+
+## Contact
+
+**Ayush Raj**  
+B.Tech. Computer Science & Engineering  
+Researcher & Developer  
+Email: **ayushrajcodes0407@gmail.com**
 
 ---
 
