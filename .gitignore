@@ -1,6 +1,64 @@
-.DS_Store
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# IDEs and Editors
 .idea/
-model files
+.vscode/
+*.swp
+*.swo
+*~
 
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
 
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
 
+# Local training checkpoints and models cache
+stage1_model/
+stage2_model/
+model files/
