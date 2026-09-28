@@ -116,6 +116,7 @@ The repository includes comprehensive validation protocols in [`notebook/main.ip
 HRA-Mental-Roberta-2026/
 ├── .gitattributes          # Git LFS configuration (*.safetensors)
 ├── .gitignore              # Project hygiene and environment ignore rules
+├── requirements.txt        # Research dependencies and environment specifications
 ├── readme.md               # Framework documentation and technical overview
 ├── data/
 │   └── data.md             # Benchmark dataset documentation and citations
@@ -144,7 +145,7 @@ python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install dependencies
-pip install torch transformers datasets accelerate scikit-learn kagglehub pandas numpy
+pip install -r requirements.txt
 ```
 
 ---
