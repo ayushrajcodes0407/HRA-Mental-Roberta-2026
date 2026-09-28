@@ -44,15 +44,19 @@ The framework adopts a two-stage strategy designed to separate the broad detecti
 
 ```mermaid
 flowchart TD
-    A[Input Text Statement] --> B[Text Preprocessing & Tokenization]
-    B --> C[Stage 1: Binary Mental-RoBERTa Classifier]
-    C -->|Normal / Healthy| D[Class: Normal]
-    C -->|At-Risk / Distressed| E[Stage 2: Multi-Class Mental-RoBERTa Classifier]
-    E --> F[Class Probability Distribution]
-    F --> G{Rule-Based Decision Layer}
-    G -->|P(Suicidal) >= Threshold| H[Class: Suicidal Ideation]
-    G -->|P(Suicidal) < Threshold| I[Argmax Class Prediction]
-    H --> J[Final Diagnostic Prediction]
+    A["Input Text Statement"] --> B["Text Preprocessing and Tokenization"]
+    B --> C["Stage 1<br/>Binary RoBERTa Classifier"]
+
+    C -->|"Normal / Healthy"| D["Normal Class"]
+    C -->|"At-Risk / Distressed"| E["Stage 2<br/>Multi-Class RoBERTa Classifier"]
+
+    E --> F["Class Probability Distribution"]
+    F --> G["Rule-Based<br/>Decision Layer"]
+
+    G -->|"High-Risk Threshold Met"| H["Suicidal Ideation Priority"]
+    G -->|"Standard Classification"| I["Argmax Condition Prediction"]
+
+    H --> J["Final Prediction"]
     I --> J
     D --> J
 ```
